@@ -11,6 +11,16 @@
 		DD546A122A90C72A000EFEBC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A112A90C72A000EFEBC /* MainViewController.swift */; };
 		DD546A172A90C72B000EFEBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD546A162A90C72B000EFEBC /* Assets.xcassets */; };
 		DD546A1A2A90C72B000EFEBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD546A182A90C72B000EFEBC /* LaunchScreen.storyboard */; };
+		DD546A282A90CFB0000EFEBC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A272A90CFB0000EFEBC /* NetworkService.swift */; };
+		DD546A2A2A90CFBD000EFEBC /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A292A90CFBD000EFEBC /* NetworkRequest.swift */; };
+		DD546A2C2A90CFC4000EFEBC /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A2B2A90CFC4000EFEBC /* NetworkEndpoint.swift */; };
+		DD546A2F2A90D154000EFEBC /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A2E2A90D154000EFEBC /* Character.swift */; };
+		DD546A312A90D2BC000EFEBC /* CharacterOrigin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A302A90D2BC000EFEBC /* CharacterOrigin.swift */; };
+		DD546A332A90D301000EFEBC /* CharacterLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A322A90D301000EFEBC /* CharacterLocation.swift */; };
+		DD546A352A90D471000EFEBC /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A342A90D471000EFEBC /* CharacterStatus.swift */; };
+		DD546A372A90D4CD000EFEBC /* CharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A362A90D4CD000EFEBC /* CharacterGender.swift */; };
+		DD546A392A90D601000EFEBC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A382A90D601000EFEBC /* MainView.swift */; };
+		DD546A3B2A90D644000EFEBC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A3A2A90D644000EFEBC /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +30,16 @@
 		DD546A162A90C72B000EFEBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD546A192A90C72B000EFEBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD546A1B2A90C72B000EFEBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD546A272A90CFB0000EFEBC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		DD546A292A90CFBD000EFEBC /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		DD546A2B2A90CFC4000EFEBC /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
+		DD546A2E2A90D154000EFEBC /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		DD546A302A90D2BC000EFEBC /* CharacterOrigin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterOrigin.swift; sourceTree = "<group>"; };
+		DD546A322A90D301000EFEBC /* CharacterLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocation.swift; sourceTree = "<group>"; };
+		DD546A342A90D471000EFEBC /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
+		DD546A362A90D4CD000EFEBC /* CharacterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGender.swift; sourceTree = "<group>"; };
+		DD546A382A90D601000EFEBC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		DD546A3A2A90D644000EFEBC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +84,7 @@
 				DD546A162A90C72B000EFEBC /* Assets.xcassets */,
 				DD546A182A90C72B000EFEBC /* LaunchScreen.storyboard */,
 				DD546A1B2A90C72B000EFEBC /* Info.plist */,
+				DD546A3A2A90D644000EFEBC /* Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -72,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				DD546A242A90CC79000EFEBC /* Application */,
+				DD546A262A90CF78000EFEBC /* NetworkLayer */,
+				DD546A2D2A90D14A000EFEBC /* ModelLayer */,
 				DD546A232A90CC70000EFEBC /* Scenes */,
 			);
 			path = Sources;
@@ -81,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				DD546A252A90CCA7000EFEBC /* Main */,
-				DD546A112A90C72A000EFEBC /* MainViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -97,8 +119,32 @@
 		DD546A252A90CCA7000EFEBC /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DD546A112A90C72A000EFEBC /* MainViewController.swift */,
+				DD546A382A90D601000EFEBC /* MainView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		DD546A262A90CF78000EFEBC /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A272A90CFB0000EFEBC /* NetworkService.swift */,
+				DD546A292A90CFBD000EFEBC /* NetworkRequest.swift */,
+				DD546A2B2A90CFC4000EFEBC /* NetworkEndpoint.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		DD546A2D2A90D14A000EFEBC /* ModelLayer */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A2E2A90D154000EFEBC /* Character.swift */,
+				DD546A302A90D2BC000EFEBC /* CharacterOrigin.swift */,
+				DD546A322A90D301000EFEBC /* CharacterLocation.swift */,
+				DD546A342A90D471000EFEBC /* CharacterStatus.swift */,
+				DD546A362A90D4CD000EFEBC /* CharacterGender.swift */,
+			);
+			path = ModelLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,8 +217,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD546A332A90D301000EFEBC /* CharacterLocation.swift in Sources */,
+				DD546A3B2A90D644000EFEBC /* Colors.swift in Sources */,
 				DD546A122A90C72A000EFEBC /* MainViewController.swift in Sources */,
+				DD546A312A90D2BC000EFEBC /* CharacterOrigin.swift in Sources */,
+				DD546A282A90CFB0000EFEBC /* NetworkService.swift in Sources */,
+				DD546A2A2A90CFBD000EFEBC /* NetworkRequest.swift in Sources */,
+				DD546A2F2A90D154000EFEBC /* Character.swift in Sources */,
+				DD546A352A90D471000EFEBC /* CharacterStatus.swift in Sources */,
+				DD546A392A90D601000EFEBC /* MainView.swift in Sources */,
 				DD546A0E2A90C72A000EFEBC /* AppDelegate.swift in Sources */,
+				DD546A372A90D4CD000EFEBC /* CharacterGender.swift in Sources */,
+				DD546A2C2A90CFC4000EFEBC /* NetworkEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,8 +373,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -345,8 +403,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
