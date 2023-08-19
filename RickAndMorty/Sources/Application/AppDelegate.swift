@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return true }
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = ViewController()
+        self.window?.rootViewController = MainViewController()
         self.window?.makeKeyAndVisible()
         return true
     }
