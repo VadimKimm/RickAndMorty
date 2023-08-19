@@ -7,55 +7,77 @@
 
 import UIKit
 
-final class MainView: UIView {
+final class MainView: BaseView {
 
     // MARK: - Views
 
     lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(
+            top: Metrics.collectionViewSectionTopInset,
+            left: Metrics.collectionViewSectionLeftInset,
+            bottom: 0,
+            right: Metrics.collectionViewRightInset
+        )
         let collectionView = UICollectionView(
             frame: .zero,
-            collectionViewLayout: UICollectionViewFlowLayout()
+            collectionViewLayout: layout
         )
         return collectionView
     }()
 
-    // MARK: - Settings
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-
-    private func commonInit() {
-        setupHierarchy()
-        setupLayout()
-        setupView()
-    }
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
 
     // MARK: - Private functions
 
-    private func setupHierarchy() {
+    override func setupHierarchy() {
         addSubview(collectionView)
+        addSubview(activityIndicator)
     }
 
-    private func setupLayout() {
+    override func setupLayout() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
-    private func setupView() {
+    override func setupView() {
         backgroundColor = Colors.darkBlue.color
         collectionView.backgroundColor = Colors.darkBlue.color
+    }
+}
+
+// MARK: - Start/stop activityIndicator
+
+extension MainView {
+    func startActivity() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.collectionView.alpha = 0
+        }
+    }
+
+    func stopActivity() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.collectionView.alpha = 1
+            }
+        }
     }
 }
 
@@ -63,7 +85,8 @@ final class MainView: UIView {
 
 extension MainView {
     enum Metrics {
-        static let navigationBarTopOffset: CGFloat = 55
-        static let collectionViewTopOffset: CGFloat = 5
+        static let collectionViewSectionTopInset: CGFloat = 31
+        static let collectionViewSectionLeftInset: CGFloat = 20
+        static let collectionViewRightInset: CGFloat = 27
     }
 }

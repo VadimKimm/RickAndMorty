@@ -21,6 +21,14 @@
 		DD546A372A90D4CD000EFEBC /* CharacterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A362A90D4CD000EFEBC /* CharacterGender.swift */; };
 		DD546A392A90D601000EFEBC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A382A90D601000EFEBC /* MainView.swift */; };
 		DD546A3B2A90D644000EFEBC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A3A2A90D644000EFEBC /* Colors.swift */; };
+		DD546A3D2A90DF67000EFEBC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A3C2A90DF67000EFEBC /* NetworkError.swift */; };
+		DD546A402A90E210000EFEBC /* AllCharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A3F2A90E210000EFEBC /* AllCharactersResponse.swift */; };
+		DD546A432A90E6A0000EFEBC /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A422A90E6A0000EFEBC /* MainPresenter.swift */; };
+		DD546A452A9100B4000EFEBC /* MainCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A442A9100B4000EFEBC /* MainCollectionViewAdapter.swift */; };
+		DD546A4A2A910137000EFEBC /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A492A910137000EFEBC /* CharacterCollectionViewCell.swift */; };
+		DD546A4E2A910173000EFEBC /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A4D2A910173000EFEBC /* BaseCollectionViewCell.swift */; };
+		DD546A502A9101D5000EFEBC /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A4F2A9101D5000EFEBC /* BaseView.swift */; };
+		DD546A522A9102FD000EFEBC /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A512A9102FD000EFEBC /* MainModuleConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +48,14 @@
 		DD546A362A90D4CD000EFEBC /* CharacterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGender.swift; sourceTree = "<group>"; };
 		DD546A382A90D601000EFEBC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DD546A3A2A90D644000EFEBC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		DD546A3C2A90DF67000EFEBC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		DD546A3F2A90E210000EFEBC /* AllCharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCharactersResponse.swift; sourceTree = "<group>"; };
+		DD546A422A90E6A0000EFEBC /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		DD546A442A9100B4000EFEBC /* MainCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		DD546A492A910137000EFEBC /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD546A4D2A910173000EFEBC /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD546A4F2A9101D5000EFEBC /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		DD546A512A9102FD000EFEBC /* MainModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +97,10 @@
 		DD546A212A90CC58000EFEBC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DD546A3A2A90D644000EFEBC /* Colors.swift */,
 				DD546A162A90C72B000EFEBC /* Assets.xcassets */,
 				DD546A182A90C72B000EFEBC /* LaunchScreen.storyboard */,
 				DD546A1B2A90C72B000EFEBC /* Info.plist */,
-				DD546A3A2A90D644000EFEBC /* Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -92,6 +108,7 @@
 		DD546A222A90CC5F000EFEBC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DD546A4B2A91015C000EFEBC /* Common */,
 				DD546A242A90CC79000EFEBC /* Application */,
 				DD546A262A90CF78000EFEBC /* NetworkLayer */,
 				DD546A2D2A90D14A000EFEBC /* ModelLayer */,
@@ -119,8 +136,12 @@
 		DD546A252A90CCA7000EFEBC /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DD546A482A91012C000EFEBC /* Cell */,
+				DD546A512A9102FD000EFEBC /* MainModuleConfigurator.swift */,
+				DD546A422A90E6A0000EFEBC /* MainPresenter.swift */,
 				DD546A112A90C72A000EFEBC /* MainViewController.swift */,
 				DD546A382A90D601000EFEBC /* MainView.swift */,
+				DD546A442A9100B4000EFEBC /* MainCollectionViewAdapter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -131,11 +152,21 @@
 				DD546A272A90CFB0000EFEBC /* NetworkService.swift */,
 				DD546A292A90CFBD000EFEBC /* NetworkRequest.swift */,
 				DD546A2B2A90CFC4000EFEBC /* NetworkEndpoint.swift */,
+				DD546A3C2A90DF67000EFEBC /* NetworkError.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
 		DD546A2D2A90D14A000EFEBC /* ModelLayer */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A412A90E307000EFEBC /* Response */,
+				DD546A3E2A90E1D9000EFEBC /* Character */,
+			);
+			path = ModelLayer;
+			sourceTree = "<group>";
+		};
+		DD546A3E2A90E1D9000EFEBC /* Character */ = {
 			isa = PBXGroup;
 			children = (
 				DD546A2E2A90D154000EFEBC /* Character.swift */,
@@ -144,7 +175,40 @@
 				DD546A342A90D471000EFEBC /* CharacterStatus.swift */,
 				DD546A362A90D4CD000EFEBC /* CharacterGender.swift */,
 			);
-			path = ModelLayer;
+			path = Character;
+			sourceTree = "<group>";
+		};
+		DD546A412A90E307000EFEBC /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A3F2A90E210000EFEBC /* AllCharactersResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		DD546A482A91012C000EFEBC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A492A910137000EFEBC /* CharacterCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DD546A4B2A91015C000EFEBC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A4C2A910164000EFEBC /* BaseView */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DD546A4C2A910164000EFEBC /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A4D2A910173000EFEBC /* BaseCollectionViewCell.swift */,
+				DD546A4F2A9101D5000EFEBC /* BaseView.swift */,
+			);
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,11 +286,19 @@
 				DD546A122A90C72A000EFEBC /* MainViewController.swift in Sources */,
 				DD546A312A90D2BC000EFEBC /* CharacterOrigin.swift in Sources */,
 				DD546A282A90CFB0000EFEBC /* NetworkService.swift in Sources */,
+				DD546A522A9102FD000EFEBC /* MainModuleConfigurator.swift in Sources */,
 				DD546A2A2A90CFBD000EFEBC /* NetworkRequest.swift in Sources */,
+				DD546A4A2A910137000EFEBC /* CharacterCollectionViewCell.swift in Sources */,
 				DD546A2F2A90D154000EFEBC /* Character.swift in Sources */,
+				DD546A452A9100B4000EFEBC /* MainCollectionViewAdapter.swift in Sources */,
 				DD546A352A90D471000EFEBC /* CharacterStatus.swift in Sources */,
+				DD546A402A90E210000EFEBC /* AllCharactersResponse.swift in Sources */,
+				DD546A4E2A910173000EFEBC /* BaseCollectionViewCell.swift in Sources */,
 				DD546A392A90D601000EFEBC /* MainView.swift in Sources */,
+				DD546A432A90E6A0000EFEBC /* MainPresenter.swift in Sources */,
 				DD546A0E2A90C72A000EFEBC /* AppDelegate.swift in Sources */,
+				DD546A3D2A90DF67000EFEBC /* NetworkError.swift in Sources */,
+				DD546A502A9101D5000EFEBC /* BaseView.swift in Sources */,
 				DD546A372A90D4CD000EFEBC /* CharacterGender.swift in Sources */,
 				DD546A2C2A90CFC4000EFEBC /* NetworkEndpoint.swift in Sources */,
 			);

@@ -9,6 +9,8 @@ import UIKit
 
 enum Colors: String {
     case darkBlue
+    case white
+    case gray
 
     var color: UIColor {
         UIColor(named: rawValue) ?? UIColor.clear
