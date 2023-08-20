@@ -9,9 +9,13 @@ import UIKit
 
 final class MainModuleConfigurator {
 
-    func configure() -> MainViewController {
+    func configure(router: MainRouterInput) -> MainViewController {
         let view = MainViewController()
-        let presenter = MainPresenter(view: view, networkService: NetworkService.shared)
+        let presenter = MainPresenter(
+            view: view,
+            router: router,
+            networkService: NetworkService.shared
+        )
         view.output = presenter
         return view
     }

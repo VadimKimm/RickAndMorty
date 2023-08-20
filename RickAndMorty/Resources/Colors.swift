@@ -11,6 +11,8 @@ enum Colors: String {
     case darkBlue
     case white
     case gray
+    case green
+    case lightGray
 
     var color: UIColor {
         UIColor(named: rawValue) ?? UIColor.clear

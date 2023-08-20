@@ -7,17 +7,23 @@
 
 import UIKit
 
+protocol MainCollectionViewAdapterOutput: AnyObject {
+    func didSelectCell(with model: Character)
+}
+
 final class MainCollectionViewAdapter: NSObject {
 
     // MARK: - Properties
 
-    private var collectionView: UICollectionView
+    private let output: MainCollectionViewAdapterOutput
+    private let collectionView: UICollectionView
     private var dataSource: [Character] = []
 
     // MARK: - Initialization
 
-    init(collectionView: UICollectionView) {
+    init(collectionView: UICollectionView, output: MainCollectionViewAdapterOutput) {
         self.collectionView = collectionView
+        self.output = output
         super.init()
         setupCollection()
     }
@@ -67,11 +73,17 @@ final class MainCollectionViewAdapter: NSObject {
 // MARK: - UICollectionViewDataSource
 
 extension MainCollectionViewAdapter: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         dataSource.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: CharacterCollectionViewCell.identifier,
             for: indexPath
@@ -92,7 +104,15 @@ extension MainCollectionViewAdapter: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MainCollectionViewAdapter: UICollectionViewDelegate {}
+extension MainCollectionViewAdapter: UICollectionViewDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        let model = dataSource[indexPath.row]
+        output.didSelectCell(with: model)
+    }
+}
 
 // MARK: - UICollectionViewDelegateFlowLayout
 

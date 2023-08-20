@@ -67,10 +67,22 @@ final class CharacterCollectionViewCell: BaseCollectionViewCell {
     override func setupLayout() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.stackViewOffset),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.stackViewOffset),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.stackViewOffset),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.stackViewBottomOffset)
+            stackView.topAnchor.constraint(
+                equalTo: topAnchor,
+                constant: Metrics.stackViewOffset
+            ),
+            stackView.leadingAnchor.constraint(
+                equalTo: leadingAnchor,
+                constant: Metrics.stackViewOffset
+            ),
+            stackView.trailingAnchor.constraint(
+                equalTo: trailingAnchor,
+                constant: -Metrics.stackViewOffset
+            ),
+            stackView.bottomAnchor.constraint(
+                equalTo: bottomAnchor,
+                constant: -Metrics.stackViewBottomOffset
+            )
         ])
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +98,7 @@ final class CharacterCollectionViewCell: BaseCollectionViewCell {
 
         imageView.layer.cornerRadius = Metrics.imageViewCornerRadius
 
-        nameLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        nameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         nameLabel.textColor = Colors.white.color
     }
 

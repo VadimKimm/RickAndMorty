@@ -48,7 +48,10 @@ final class MainViewController: UIViewController {
     }
 
     private func setupCollectionViewAdapter() {
-        adapter = MainCollectionViewAdapter(collectionView: customView.collectionView)
+        adapter = MainCollectionViewAdapter(
+            collectionView: customView.collectionView,
+            output: self
+        )
     }
 
     private func fetchCharacters() {
@@ -63,5 +66,13 @@ extension MainViewController: MainViewInput {
     func reload(with datasource: [Character]) {
         adapter?.configure(with: datasource)
         customView.stopActivity()
+    }
+}
+
+// MARK: - MainCollectionViewAdapterOutput
+
+extension MainViewController: MainCollectionViewAdapterOutput {
+    func didSelectCell(with model: Character) {
+        output?.showDetail(for: model)
     }
 }
