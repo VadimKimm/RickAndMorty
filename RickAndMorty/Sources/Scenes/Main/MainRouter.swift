@@ -10,9 +10,11 @@ import UIKit
 protocol MainRouterInput {
     func showDetailScreen(with model: Character)
     func backToRootViewController()
+    func showAlert(with message: String)
 }
 
 final class MainRouter: MainRouterInput {
+
     var navigationController: UINavigationController?
 
     init(navigationController: UINavigationController) {
@@ -29,6 +31,12 @@ final class MainRouter: MainRouterInput {
         guard let navigationController = navigationController else { return }
         let viewController = DetailCharacterModuleConfigurator().configure(router: self, with: model)
         navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func showAlert(with message: String) {
+        guard let navigationController = navigationController else { return }
+        let alertController = AlertController(title: nil, message: message, preferredStyle: .alert)
+        navigationController.present(alertController, animated: true)
     }
 
     func backToRootViewController() {

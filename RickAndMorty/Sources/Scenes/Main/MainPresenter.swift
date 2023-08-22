@@ -20,10 +20,9 @@ final class MainPresenter: MainViewOutput {
     private weak var view: MainViewInput?
     private var router: MainRouterInput?
     private var networkService: NetworkServiceType?
-
     private var charactersResponse: AllCharactersResponse?
 
-    // MARK: - Internal functions
+    // MARK: - Internal methods
 
     init(view: MainViewInput, router: MainRouterInput, networkService: NetworkServiceType) {
         self.view = view
@@ -32,15 +31,13 @@ final class MainPresenter: MainViewOutput {
     }
 
     func fetchInitialData() {
-        networkService?.execute(
-            .listCharacters,
-            expecting: AllCharactersResponse.self
-        ) { [weak self] result in
+        networkService?.execute(.listCharacters, expecting: AllCharactersResponse.self) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.charactersResponse = response
                 self?.reload()
             case .failure(let error):
+                self?.showAlert(with: error.localizedDescription)
                 print(error)
             }
         }
@@ -51,16 +48,14 @@ final class MainPresenter: MainViewOutput {
               let request = NetworkRequest(urlString: urlString)
         else { return }
 
-        networkService?.execute(
-            request,
-            expecting: AllCharactersResponse.self
-        ) { [weak self] result in
+        networkService?.execute(request, expecting: AllCharactersResponse.self) { [weak self] result in
             switch result {
             case .success(let response):
                 self?.charactersResponse?.results.append(contentsOf: response.results)
                 self?.charactersResponse?.info = response.info
                 self?.reloadWithNewData()
             case .failure(let error):
+                self?.showAlert(with: error.localizedDescription)
                 print(error)
             }
         }
@@ -70,15 +65,25 @@ final class MainPresenter: MainViewOutput {
         router?.showDetailScreen(with: model)
     }
 
-    // MARK: - Private functions
+    // MARK: - Private methods
 
     private func reload() {
         guard let charactersResponse = charactersResponse else { return }
-        self.view?.didFetchInitialData(with: charactersResponse)
+        DispatchQueue.main.async {
+            self.view?.didFetchInitialData(with: charactersResponse)
+        }
     }
 
     private func reloadWithNewData() {
         guard let charactersResponse = charactersResponse else { return }
-        self.view?.didFtechMoreData(with: charactersResponse)
+        DispatchQueue.main.async {
+            self.view?.didFetchMoreData(with: charactersResponse)
+        }
+    }
+
+    private func showAlert(with message: String) {
+        DispatchQueue.main.async {
+            self.router?.showAlert(with: String(describing: message))
+        }
     }
 }

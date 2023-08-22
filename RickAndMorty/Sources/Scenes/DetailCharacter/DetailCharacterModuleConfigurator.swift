@@ -11,7 +11,12 @@ final class DetailCharacterModuleConfigurator {
 
     func configure(router: MainRouterInput, with model: Character) -> DetailCharacterViewController {
         let view = DetailCharacterViewController()
-        let presenter = DetailCharacterPresenter(view: view, router: router, model: model)
+        let presenter = DetailCharacterPresenter(
+            view: view,
+            router: router,
+            networkService: NetworkService.shared,
+            model: model
+        )
         view.output = presenter
         return view
     }

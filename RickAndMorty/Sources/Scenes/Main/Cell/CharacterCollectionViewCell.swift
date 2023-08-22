@@ -17,14 +17,20 @@ final class CharacterCollectionViewCell: BaseCollectionViewCell {
         return CGSize(width: width, height: height)
     }
 
-    func configure(with title: String) {
-        nameLabel.text = title
-    }
+    func configure(with model: Character) {
+        nameLabel.text = model.name
 
-    func setImage(_ data: Data) {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.5) { [weak self] in
-                self?.imageView.image = UIImage(data: data)
+        ImageLoaderService.shared.downloadImage(with: model.image) { [weak self] result in
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5) { [weak self] in
+                    guard let sself = self else { return }
+                    switch result {
+                    case .success(let data):
+                        sself.imageView.image = UIImage(data: data)
+                    case .failure:
+                        sself.imageView.image = Images.noImageData.image
+                    }
+                }
             }
         }
     }
@@ -69,15 +75,15 @@ final class CharacterCollectionViewCell: BaseCollectionViewCell {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(
                 equalTo: topAnchor,
-                constant: Metrics.stackViewOffset
+                constant: Metrics.stackViewDefaultOffset
             ),
             stackView.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
-                constant: Metrics.stackViewOffset
+                constant: Metrics.stackViewDefaultOffset
             ),
             stackView.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
-                constant: -Metrics.stackViewOffset
+                constant: -Metrics.stackViewDefaultOffset
             ),
             stackView.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
@@ -116,7 +122,7 @@ private extension CharacterCollectionViewCell {
         static let cornerRadius: CGFloat = 16
 
         static let stackViewSpacing: CGFloat = 16
-        static let stackViewOffset: CGFloat = 8
+        static let stackViewDefaultOffset: CGFloat = 8
         static let stackViewBottomOffset: CGFloat = 16
 
         static let imageViewCornerRadius: CGFloat = 10

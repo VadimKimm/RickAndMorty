@@ -11,13 +11,12 @@ final class CharacterEpisodesView: BaseView {
 
     // MARK: - Configuration
 
-    func configure(with episodes: [String]) {
-        let pathComponents = episodes.map {
-            let lastComponent = $0.components(separatedBy: "/").last
-            return lastComponent ?? "1"
+    func configure(with episodes: [Episode]) {
+        episodes.forEach {
+            let episodeView = EpisodeView()
+            episodeView.configure(with: $0)
+            self.addToStackView(episodeView)
         }
-
-        getEpisodes(episodes)
     }
 
     // MARK: - Views
@@ -32,7 +31,7 @@ final class CharacterEpisodesView: BaseView {
 
     private let titleLabel = UILabel()
 
-    // MARK: - Private functions
+    // MARK: - Settings
 
     override func setupHierarchy() {
         addSubview(titleLabel)
@@ -64,41 +63,7 @@ final class CharacterEpisodesView: BaseView {
         titleLabel.text = Strings.episodes
     }
 
-//    private func getEpisodes(_ episodes: [String]) {
-//        episodes.forEach {
-//            let request = NetworkRequest(endpoint: .episode, pathComponents: [$0])
-//            NetworkService.shared.execute(request, expecting: Episode.self) { [weak self] result in
-//                switch result {
-//                case .success(let data):
-//                    DispatchQueue.main.async {
-//                        let episodeView = EpisodeView()
-//                        episodeView.configure(with: data)
-//                        self?.addToStackView(episodeView)
-//                    }
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
-//        }
-//    }
-
-    private func getEpisodes(_ episodes: [String]) {
-        episodes.forEach {
-            guard let request = NetworkRequest(urlString: $0) else { return }
-            NetworkService.shared.execute(request, expecting: Episode.self) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        let episodeView = EpisodeView()
-                        episodeView.configure(with: data)
-                        self?.addToStackView(episodeView)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-    }
+    // MARK: - Configure episode views
 
     private func addToStackView(_ view: UIView) {
         stackView.addArrangedSubview(view)

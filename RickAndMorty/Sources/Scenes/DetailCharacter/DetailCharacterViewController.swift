@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailCharacterViewInput: AnyObject {
-    func update(with model: Character)
+    func update(with model: Character, episodes: [Episode])
 }
 
 final class DetailCharacterViewController: UIViewController {
@@ -34,13 +34,17 @@ final class DetailCharacterViewController: UIViewController {
         output?.viewDidLoad()
     }
 
-    // MARK: - Private functions
+    deinit {
+        print("💀" + "\(type(of: self)) " + "dead")
+    }
+
+    // MARK: - Private methods
 
     private func setupView() {
         let backItem = UIBarButtonItem()
         backItem.action = #selector(back)
         backItem.target = self
-        backItem.image = UIImage(systemName: "chevron.left")?
+        backItem.image = Images.arrowLeft.systemImage?
             .withConfiguration(UIImage.SymbolConfiguration(weight: .medium))
             .withTintColor(.white, renderingMode: .alwaysOriginal)
 
@@ -56,7 +60,8 @@ final class DetailCharacterViewController: UIViewController {
 // MARK: - DetailCharacterViewInput
 
 extension DetailCharacterViewController: DetailCharacterViewInput {
-    func update(with model: Character) {
-        customView.configure(with: model)
+    func update(with model: Character, episodes: [Episode]) {
+        customView.stopActivity()
+        customView.configure(with: model, episodes: episodes)
     }
 }

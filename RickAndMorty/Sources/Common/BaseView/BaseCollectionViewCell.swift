@@ -17,8 +17,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Settings

@@ -37,8 +37,7 @@ final class ActivityFooterReusableView: UICollectionReusableView {
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func commonInit() {
@@ -47,7 +46,7 @@ final class ActivityFooterReusableView: UICollectionReusableView {
         setupView()
     }
 
-    // MARK: - Private functions
+    // MARK: - Private methods
 
     private func setupHierarchy() {
         addSubview(activityIndicator)
@@ -65,4 +64,3 @@ final class ActivityFooterReusableView: UICollectionReusableView {
         activityIndicator.startAnimating()
     }
 }
-

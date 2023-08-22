@@ -16,8 +16,8 @@ final class MainView: BaseView {
         layout.sectionInset = UIEdgeInsets(
             top: Metrics.collectionViewSectionTopInset,
             left: Metrics.collectionViewSectionLeftInset,
-            bottom: 0,
-            right: Metrics.collectionViewRightInset
+            bottom: Metrics.collectionViewSectionBottomInset,
+            right: Metrics.collectionViewSectionRightInset
         )
         let collectionView = UICollectionView(
             frame: .zero,
@@ -32,7 +32,7 @@ final class MainView: BaseView {
         return indicator
     }()
 
-    // MARK: - Private functions
+    // MARK: - Settings
 
     override func setupHierarchy() {
         addSubview(collectionView)
@@ -57,23 +57,21 @@ final class MainView: BaseView {
 
     override func setupView() {
         backgroundColor = Colors.darkBlue.color
+
         collectionView.backgroundColor = Colors.darkBlue.color
+        collectionView.alpha = 0
+
+        activityIndicator.startAnimating()
     }
 }
 
-// MARK: - Start/stop activityIndicator
+// MARK: - Stop activityIndicator
 
 extension MainView {
-    func startActivity() {
-        DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-            self.collectionView.alpha = 0
-        }
-    }
-
     func stopActivity() {
+        self.activityIndicator.stopAnimating()
+        
         DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
             UIView.animate(withDuration: 0.5) { [weak self] in
                 self?.collectionView.alpha = 1
             }
@@ -87,6 +85,7 @@ extension MainView {
     enum Metrics {
         static let collectionViewSectionTopInset: CGFloat = 31
         static let collectionViewSectionLeftInset: CGFloat = 20
-        static let collectionViewRightInset: CGFloat = 27
+        static let collectionViewSectionRightInset: CGFloat = 27
+        static let collectionViewSectionBottomInset: CGFloat = 0
     }
 }

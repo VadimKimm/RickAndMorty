@@ -41,6 +41,10 @@
 		DD546A6B2A9239C5000EFEBC /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A6A2A9239C5000EFEBC /* Episode.swift */; };
 		DD546A6D2A92497C000EFEBC /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A6C2A92497C000EFEBC /* EpisodeView.swift */; };
 		DD546A6F2A937B0C000EFEBC /* ActivityFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A6E2A937B0C000EFEBC /* ActivityFooterReusableView.swift */; };
+		DD546A742A94D131000EFEBC /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A732A94D131000EFEBC /* Info.swift */; };
+		DD546A782A94DE18000EFEBC /* ImageLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A772A94DE18000EFEBC /* ImageLoaderService.swift */; };
+		DD546A7A2A94E889000EFEBC /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A792A94E889000EFEBC /* Images.swift */; };
+		DD546A7C2A94EBAC000EFEBC /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A7B2A94EBAC000EFEBC /* AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +84,10 @@
 		DD546A6A2A9239C5000EFEBC /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		DD546A6C2A92497C000EFEBC /* EpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
 		DD546A6E2A937B0C000EFEBC /* ActivityFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFooterReusableView.swift; sourceTree = "<group>"; };
+		DD546A732A94D131000EFEBC /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		DD546A772A94DE18000EFEBC /* ImageLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderService.swift; sourceTree = "<group>"; };
+		DD546A792A94E889000EFEBC /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		DD546A7B2A94EBAC000EFEBC /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				DD546A3A2A90D644000EFEBC /* Colors.swift */,
+				DD546A792A94E889000EFEBC /* Images.swift */,
 				DD546A162A90C72B000EFEBC /* Assets.xcassets */,
 				DD546A182A90C72B000EFEBC /* LaunchScreen.storyboard */,
 				DD546A1B2A90C72B000EFEBC /* Info.plist */,
@@ -144,6 +153,7 @@
 		DD546A232A90CC70000EFEBC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DD546A7D2A94EBC5000EFEBC /* Alert */,
 				DD546A252A90CCA7000EFEBC /* Main */,
 				DD546A532A91234F000EFEBC /* DetailCharacter */,
 			);
@@ -179,6 +189,7 @@
 				DD546A292A90CFBD000EFEBC /* NetworkRequest.swift */,
 				DD546A2B2A90CFC4000EFEBC /* NetworkEndpoint.swift */,
 				DD546A3C2A90DF67000EFEBC /* NetworkError.swift */,
+				DD546A772A94DE18000EFEBC /* ImageLoaderService.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				DD546A3F2A90E210000EFEBC /* AllCharactersResponse.swift */,
+				DD546A732A94D131000EFEBC /* Info.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -269,6 +281,14 @@
 				DD546A6A2A9239C5000EFEBC /* Episode.swift */,
 			);
 			path = Episode;
+			sourceTree = "<group>";
+		};
+		DD546A7D2A94EBC5000EFEBC /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A7B2A94EBAC000EFEBC /* AlertController.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +368,7 @@
 				DD546A312A90D2BC000EFEBC /* CharacterOrigin.swift in Sources */,
 				DD546A282A90CFB0000EFEBC /* NetworkService.swift in Sources */,
 				DD546A552A912589000EFEBC /* DetailCharacterViewController.swift in Sources */,
+				DD546A7A2A94E889000EFEBC /* Images.swift in Sources */,
 				DD546A522A9102FD000EFEBC /* MainModuleConfigurator.swift in Sources */,
 				DD546A2A2A90CFBD000EFEBC /* NetworkRequest.swift in Sources */,
 				DD546A4A2A910137000EFEBC /* CharacterCollectionViewCell.swift in Sources */,
@@ -355,13 +376,16 @@
 				DD546A2F2A90D154000EFEBC /* Character.swift in Sources */,
 				DD546A5D2A912A95000EFEBC /* DetailCharacterModuleConfigurator.swift in Sources */,
 				DD546A6D2A92497C000EFEBC /* EpisodeView.swift in Sources */,
+				DD546A782A94DE18000EFEBC /* ImageLoaderService.swift in Sources */,
 				DD546A6F2A937B0C000EFEBC /* ActivityFooterReusableView.swift in Sources */,
 				DD546A6B2A9239C5000EFEBC /* Episode.swift in Sources */,
+				DD546A7C2A94EBAC000EFEBC /* AlertController.swift in Sources */,
 				DD546A452A9100B4000EFEBC /* MainCollectionViewAdapter.swift in Sources */,
 				DD546A602A914038000EFEBC /* CharacterInfoView.swift in Sources */,
 				DD546A352A90D471000EFEBC /* CharacterStatus.swift in Sources */,
 				DD546A402A90E210000EFEBC /* AllCharactersResponse.swift in Sources */,
 				DD546A4E2A910173000EFEBC /* BaseCollectionViewCell.swift in Sources */,
+				DD546A742A94D131000EFEBC /* Info.swift in Sources */,
 				DD546A392A90D601000EFEBC /* MainView.swift in Sources */,
 				DD546A432A90E6A0000EFEBC /* MainPresenter.swift in Sources */,
 				DD546A642A922A91000EFEBC /* CharacterOriginView.swift in Sources */,

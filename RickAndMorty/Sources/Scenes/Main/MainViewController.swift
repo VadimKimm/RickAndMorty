@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainViewInput: AnyObject {
     func didFetchInitialData(with charactersResponse: AllCharactersResponse)
-    func didFtechMoreData(with charactersResponse: AllCharactersResponse)
+    func didFetchMoreData(with charactersResponse: AllCharactersResponse)
 }
 
 final class MainViewController: UIViewController {
@@ -34,7 +34,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupCollectionViewAdapter()
-        fetchInitialData()
+        output?.fetchInitialData()
     }
 
     // MARK: - Private functions
@@ -50,11 +50,6 @@ final class MainViewController: UIViewController {
             output: self
         )
     }
-
-    private func fetchInitialData() {
-        customView.startActivity()
-        output?.fetchInitialData()
-    }
 }
 
 // MARK: - MainViewInput
@@ -65,7 +60,7 @@ extension MainViewController: MainViewInput {
         customView.stopActivity()
     }
 
-    func didFtechMoreData(with charactersResponse: AllCharactersResponse) {
+    func didFetchMoreData(with charactersResponse: AllCharactersResponse) {
         adapter?.update(with: charactersResponse)
     }
 }

@@ -10,11 +10,4 @@ import Foundation
 struct AllCharactersResponse: Codable {
     var info: Info
     var results: [Character]
-
-    struct Info: Codable {
-        let count: Int
-        let pages: Int
-        let next: String?
-        let prev: String?
-    }
 }

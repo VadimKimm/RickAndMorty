@@ -11,23 +11,24 @@ final class DetailCharacterView: BaseView {
 
     // MARK: - Configuration
 
-    func configure(with model: Character) {
+    func configure(with model: Character, episodes: [Episode]) {
         nameLabel.text = model.name
         statusLabel.text = model.status.rawValue.capitalized
         infoView.configure(with: model)
         originView.configure(with: model.origin.name)
-        episodesView.configure(with: model.episode)
+        episodesView.configure(with: episodes)
 
-        NetworkService.shared.downloadImage(with: model.image) { [weak self] result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.5) { [weak self] in
-                        self?.imageView.image = UIImage(data: data)
+        ImageLoaderService.shared.downloadImage(with: model.image) { [weak self] result in
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5) { [weak self] in
+                    guard let sself = self else { return }
+                    switch result {
+                    case .success(let data):
+                        sself.imageView.image = UIImage(data: data)
+                    case .failure:
+                        sself.imageView.image = Images.noImageData.image
                     }
                 }
-            case .failure(let error):
-                print(error)
             }
         }
     }
@@ -38,6 +39,12 @@ final class DetailCharacterView: BaseView {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
+    }()
+
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        return indicator
     }()
 
     private lazy var stackView: UIStackView = {
@@ -72,10 +79,11 @@ final class DetailCharacterView: BaseView {
     private let originView = CharacterOriginView()
     private let episodesView = CharacterEpisodesView()
 
-    // MARK: - Private functions
+    // MARK: - Settings
 
     override func setupHierarchy() {
         addSubview(scrollView)
+        addSubview(activityIndicator)
         scrollView.addSubview(stackView)
 
         stackView.addArrangedSubview(imageView)
@@ -95,15 +103,21 @@ final class DetailCharacterView: BaseView {
             ),
             scrollView.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
-                constant: Metrics.scrollViewOffset
+                constant: Metrics.scrollViewDefaultOffset
             ),
             scrollView.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
-                constant: -Metrics.scrollViewOffset
+                constant: -Metrics.scrollViewDefaultOffset
             ),
             scrollView.bottomAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.bottomAnchor
+                equalTo: bottomAnchor
             )
+        ])
+
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -138,6 +152,8 @@ final class DetailCharacterView: BaseView {
 
     override func setupView() {
         backgroundColor = Colors.darkBlue.color
+        scrollView.alpha = 0
+        activityIndicator.startAnimating()
 
         imageView.layer.cornerRadius = Metrics.imageViewCornerRadius
 
@@ -149,13 +165,27 @@ final class DetailCharacterView: BaseView {
     }
 }
 
+// MARK: - Stop activityIndicator
+
+extension DetailCharacterView {
+    func stopActivity() {
+        self.activityIndicator.stopAnimating()
+
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.scrollView.alpha = 1
+            }
+        }
+    }
+}
+
 // MARK: - Metrics
 
 private extension DetailCharacterView {
     enum Metrics {
         static let cornerRadius: CGFloat = 16
         static let scrollViewTopOffset: CGFloat = 16
-        static let scrollViewOffset: CGFloat = 24
+        static let scrollViewDefaultOffset: CGFloat = 24
 
         static let stackViewSpacing: CGFloat = 24
         static let stackViewCustomSpacing: CGFloat = 8

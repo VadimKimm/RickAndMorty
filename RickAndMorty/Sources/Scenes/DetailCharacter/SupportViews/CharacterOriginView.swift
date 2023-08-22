@@ -25,13 +25,13 @@ final class CharacterOriginView: BaseView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: Strings.planetIcon)
+        imageView.image = Images.planetIcon.image
         return imageView
     }()
 
     private let containerPlanetView = UIView()
 
-    private lazy var stackView: UIStackView = {
+    private lazy var planetLabelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = Metrics.stackViewSpacing
@@ -48,7 +48,7 @@ final class CharacterOriginView: BaseView {
 
     private let planetLabel = UILabel()
 
-    // MARK: - Private functions
+    // MARK: - Settings
 
     override func setupHierarchy() {
         addSubview(titleLabel)
@@ -56,10 +56,10 @@ final class CharacterOriginView: BaseView {
 
         containerPlanetView.addSubview(containerImageView)
         containerImageView.addSubview(imageView)
-        containerPlanetView.addSubview(stackView)
+        containerPlanetView.addSubview(planetLabelsStackView)
 
-        stackView.addArrangedSubview(planetNameLabel)
-        stackView.addArrangedSubview(planetLabel)
+        planetLabelsStackView.addArrangedSubview(planetNameLabel)
+        planetLabelsStackView.addArrangedSubview(planetLabel)
     }
 
     override func setupLayout() {
@@ -86,15 +86,15 @@ final class CharacterOriginView: BaseView {
             containerImageView.centerYAnchor.constraint(equalTo: containerPlanetView.centerYAnchor),
             containerImageView.topAnchor.constraint(
                 equalTo: containerPlanetView.topAnchor,
-                constant: Metrics.containerImageViewOffset
+                constant: Metrics.containerImageViewDefaultOffset
             ),
             containerImageView.leadingAnchor.constraint(
                 equalTo: containerPlanetView.leadingAnchor,
-                constant: Metrics.containerImageViewOffset
+                constant: Metrics.containerImageViewDefaultOffset
             ),
             containerImageView.bottomAnchor.constraint(
                 equalTo: containerPlanetView.bottomAnchor,
-                constant: -Metrics.containerImageViewOffset
+                constant: -Metrics.containerImageViewDefaultOffset
             ),
             containerImageView.heightAnchor.constraint(
                 equalTo: containerPlanetView.heightAnchor,
@@ -114,21 +114,21 @@ final class CharacterOriginView: BaseView {
             imageView.widthAnchor.constraint(equalToConstant: Metrics.imageViewHeight)
         ])
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        planetLabelsStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(
+            planetLabelsStackView.topAnchor.constraint(
                 equalTo: containerPlanetView.topAnchor,
                 constant: Metrics.stackViewOffset
             ),
-            stackView.leadingAnchor.constraint(
+            planetLabelsStackView.leadingAnchor.constraint(
                 equalTo: containerImageView.trailingAnchor,
                 constant: Metrics.stackViewOffset
             ),
-            stackView.trailingAnchor.constraint(
+            planetLabelsStackView.trailingAnchor.constraint(
                 equalTo: containerPlanetView.trailingAnchor,
                 constant: -Metrics.stackViewOffset
             ),
-            stackView.bottomAnchor.constraint(
+            planetLabelsStackView.bottomAnchor.constraint(
                 equalTo: containerPlanetView.bottomAnchor,
                 constant: -Metrics.stackViewOffset
             )
@@ -162,13 +162,12 @@ private extension CharacterOriginView {
         static let containerViewTopOffset: CGFloat = 16
         static let containerPlanetViewCornerRadius: CGFloat = 16
 
+        static let containerImageViewDefaultOffset: CGFloat = 8
         static let containerImageViewHeightOffset: CGFloat = 16
         static let containerImageViewCornerRadius: CGFloat = 10
 
         static let imageViewHeight: CGFloat = 24
 
-        static let containerImageViewOffset: CGFloat = 8
-        
         static let stackViewSpacing: CGFloat = 8
         static let stackViewOffset: CGFloat = 16
     }
@@ -176,6 +175,5 @@ private extension CharacterOriginView {
     enum Strings {
         static let origin = "Origin"
         static let planet = "Planet"
-        static let planetIcon = "planetIcon"
     }
 }

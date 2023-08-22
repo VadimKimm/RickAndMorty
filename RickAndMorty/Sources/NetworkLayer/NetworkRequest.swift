@@ -9,6 +9,11 @@ import Foundation
 
 final class NetworkRequest {
 
+    // MARK: - Properties
+
+    public var url: URL? { URL(string: urlString) }
+    public let httpMethod = "GET"
+
     private let endpoint: NetworkEndpoint
     private let pathComponents: [String]
     private let queryParameters: [URLQueryItem]
@@ -36,9 +41,7 @@ final class NetworkRequest {
         return string
     }
 
-    public var url: URL? { URL(string: urlString) }
-
-    public let httpMethod = "GET"
+    // MARK: - Initialization
 
     init(
         endpoint: NetworkEndpoint,
@@ -76,7 +79,7 @@ final class NetworkRequest {
                 let parts = $0.components(separatedBy: "=")
                 return URLQueryItem(name: parts[0], value: parts[1])
             }
-            
+
             if let endpoint = NetworkEndpoint(rawValue: endpointString) {
                 self.init(endpoint: endpoint, queryParameters: queryItems)
                 return

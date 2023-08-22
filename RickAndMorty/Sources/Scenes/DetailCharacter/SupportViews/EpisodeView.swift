@@ -40,7 +40,7 @@ final class EpisodeView: BaseView {
         return label
     }()
 
-    // MARK: - Private functions
+    // MARK: - Settings
 
     override func setupHierarchy() {
         addSubview(titleLabel)
@@ -101,6 +101,8 @@ final class EpisodeView: BaseView {
         airDateLabel.font = .systemFont(ofSize: 12, weight: .medium)
         airDateLabel.textColor = Colors.lightGray.color
     }
+
+    // MARK: - Configure episode name
 
     private func getEpisodeName(from string: String) -> String {
         let pattern = /S(?<season>[0-9]{2})E(?<episode>[0-9]{2})/

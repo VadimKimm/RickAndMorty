@@ -19,7 +19,7 @@ final class MainCollectionViewAdapter: NSObject {
     private let output: MainCollectionViewAdapterOutput
     private let collectionView: UICollectionView
     private var dataSource: [Character] = []
-    private var apiInfo: AllCharactersResponse.Info?
+    private var apiInfo: Info?
 
     private var shouldLoadMoreData: Bool { apiInfo?.next != nil }
     private var isFetching = false
@@ -39,10 +39,8 @@ final class MainCollectionViewAdapter: NSObject {
         self.dataSource = charactersResponse.results
         self.apiInfo = charactersResponse.info
         isFetching = false
-        
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
+
+        self.collectionView.reloadData()
     }
 
     func update(with charactersResponse: AllCharactersResponse) {
@@ -54,10 +52,8 @@ final class MainCollectionViewAdapter: NSObject {
         self.apiInfo = charactersResponse.info
         isFetching = false
 
-        DispatchQueue.main.async {
-            self.collectionView.performBatchUpdates { [weak self] in
-                self?.collectionView.insertItems(at: indexPaths)
-            }
+        self.collectionView.performBatchUpdates { [weak self] in
+            self?.collectionView.insertItems(at: indexPaths)
         }
     }
 
@@ -97,17 +93,7 @@ extension MainCollectionViewAdapter: UICollectionViewDataSource {
             withReuseIdentifier: CharacterCollectionViewCell.identifier,
             for: indexPath
         ) as? CharacterCollectionViewCell else { return UICollectionViewCell() }
-        let model = dataSource[indexPath.row]
-        cell.configure(with: model.name)
-
-        NetworkService.shared.downloadImage(with: model.image) { result in
-            switch result {
-            case .success(let data):
-                cell.setImage(data)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        cell.configure(with: dataSource[indexPath.row])
         return cell
     }
 }

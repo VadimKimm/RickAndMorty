@@ -33,7 +33,7 @@ final class CharacterInfoView: BaseView {
     private let typeView = CharacterInfoTraitView(title: Strings.type)
     private let genderView = CharacterInfoTraitView(title: Strings.gender)
 
-    // MARK: - Private functions
+    // MARK: - Settings
 
     override func setupHierarchy() {
         addSubview(titleLabel)

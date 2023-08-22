@@ -34,7 +34,7 @@ final class CharacterInfoTraitView: BaseView {
         return label
     }()
 
-    // MARK: - Private functions
+    // MARK: - Settings
 
     required init(title: String) {
         titleLabel.text = title
