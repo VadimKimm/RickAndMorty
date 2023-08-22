@@ -45,6 +45,7 @@
 		DD546A782A94DE18000EFEBC /* ImageLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A772A94DE18000EFEBC /* ImageLoaderService.swift */; };
 		DD546A7A2A94E889000EFEBC /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A792A94E889000EFEBC /* Images.swift */; };
 		DD546A7C2A94EBAC000EFEBC /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A7B2A94EBAC000EFEBC /* AlertController.swift */; };
+		DD546A802A94F17C000EFEBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD546A822A94F17C000EFEBC /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		DD546A772A94DE18000EFEBC /* ImageLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderService.swift; sourceTree = "<group>"; };
 		DD546A792A94E889000EFEBC /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		DD546A7B2A94EBAC000EFEBC /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		DD546A812A94F17C000EFEBC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				DD546A3A2A90D644000EFEBC /* Colors.swift */,
 				DD546A792A94E889000EFEBC /* Images.swift */,
+				DD546A822A94F17C000EFEBC /* Localizable.strings */,
 				DD546A162A90C72B000EFEBC /* Assets.xcassets */,
 				DD546A182A90C72B000EFEBC /* LaunchScreen.storyboard */,
 				DD546A1B2A90C72B000EFEBC /* Info.plist */,
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD546A1A2A90C72B000EFEBC /* LaunchScreen.storyboard in Resources */,
+				DD546A802A94F17C000EFEBC /* Localizable.strings in Resources */,
 				DD546A172A90C72B000EFEBC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +413,14 @@
 				DD546A192A90C72B000EFEBC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DD546A822A94F17C000EFEBC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD546A812A94F17C000EFEBC /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -144,14 +144,14 @@ final class CharacterOriginView: BaseView {
 
         titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textColor = Colors.white.color
-        titleLabel.text = Strings.origin
+        titleLabel.text = String(localized: "detailCharacter.origin")
 
         planetNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         planetNameLabel.textColor = Colors.white.color
 
         planetLabel.font = .systemFont(ofSize: 13, weight: .medium)
         planetLabel.textColor = Colors.green.color
-        planetLabel.text = Strings.planet
+        planetLabel.text = String(localized: "detailCharacter.planet")
     }
 }
 
@@ -170,10 +170,5 @@ private extension CharacterOriginView {
 
         static let stackViewSpacing: CGFloat = 8
         static let stackViewOffset: CGFloat = 16
-    }
-
-    enum Strings {
-        static let origin = "Origin"
-        static let planet = "Planet"
     }
 }

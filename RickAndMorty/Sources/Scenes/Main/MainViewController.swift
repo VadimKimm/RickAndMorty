@@ -37,10 +37,10 @@ final class MainViewController: UIViewController {
         output?.fetchInitialData()
     }
 
-    // MARK: - Private functions
+    // MARK: - Private methods
 
     private func setupView() {
-        title = "Characters"
+        title = String(localized: "main.title")
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 

@@ -13,19 +13,14 @@ final class AlertController: UIAlertController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = Strings.title
+        title = String(localized: "alert.title")
 
-        let cancelAction = UIAlertAction(title: Strings.cancel, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(
+            title: String(localized: "alert.cancel"),
+            style: .cancel,
+            handler: nil
+        )
 
         self.addAction(cancelAction)
-    }
-
-    // MARK: - Internal methods
-}
-
-extension AlertController {
-    enum Strings {
-        static let title = "Error occurred"
-        static let cancel = "Cancel"
     }
 }

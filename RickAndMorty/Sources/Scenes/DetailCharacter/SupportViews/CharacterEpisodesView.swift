@@ -60,7 +60,7 @@ final class CharacterEpisodesView: BaseView {
     override func setupView() {
         titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textColor = Colors.white.color
-        titleLabel.text = Strings.episodes
+        titleLabel.text = String(localized: "detailCharacter.episodes")
     }
 
     // MARK: - Configure episode views
@@ -81,9 +81,5 @@ private extension CharacterEpisodesView {
     enum Metrics {
         static let stackViewOffset: CGFloat = 16
         static let stackViewSpacing: CGFloat = 16
-    }
-
-    enum Strings {
-        static let episodes = "Episodes"
     }
 }

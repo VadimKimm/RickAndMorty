@@ -13,15 +13,17 @@ enum NetworkError: Error {
     case badUrl
 }
 
+// MARK: - LocalizedError
+
 extension NetworkError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .failedToCreateRequest:
-            return NSLocalizedString("Failed to create request.", comment: "")
+            return NSLocalizedString("networkError.failedToCreateRequest", comment: "")
         case .failedToGetData:
-            return NSLocalizedString("Couldn't get data", comment: "")
+            return NSLocalizedString("networkError.failedToGetData", comment: "")
         case .badUrl:
-            return NSLocalizedString("Couldn't create request.", comment: "")
+            return NSLocalizedString("networkError.badUrl", comment: "")
         }
     }
 }

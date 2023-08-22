@@ -29,9 +29,9 @@ final class CharacterInfoView: BaseView {
 
     private let titleLabel = UILabel()
     private let containerView = UIView()
-    private let speciesView = CharacterInfoTraitView(title: Strings.species)
-    private let typeView = CharacterInfoTraitView(title: Strings.type)
-    private let genderView = CharacterInfoTraitView(title: Strings.gender)
+    private let speciesView = CharacterInfoTraitView(title: String(localized: "detailCharacter.species"))
+    private let typeView = CharacterInfoTraitView(title: String(localized: "detailCharacter.type"))
+    private let genderView = CharacterInfoTraitView(title: String(localized: "detailCharacter.gender"))
 
     // MARK: - Settings
 
@@ -99,7 +99,7 @@ final class CharacterInfoView: BaseView {
 
         titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textColor = Colors.white.color
-        titleLabel.text = Strings.info
+        titleLabel.text = String(localized: "detailCharacter.info")
     }
 }
 
@@ -112,12 +112,5 @@ private extension CharacterInfoView {
 
         static let containerViewTopOffset: CGFloat = 16
         static let containerViewCornerRadius: CGFloat = 16
-    }
-
-    enum Strings {
-        static let info = "Info"
-        static let species = "Species:"
-        static let type = "Type:"
-        static let gender = "Gender:"
     }
 }
