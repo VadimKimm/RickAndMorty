@@ -11,7 +11,8 @@ protocol NetworkServiceType {
     func execute<T: Codable>(
         _ request: NetworkRequest,
         expecting type: T.Type,
-        completion: @escaping (Result<T, Error>) -> Void
+        completion: @escaping (Result<T, Error>
+        ) -> Void
     )
 }
 

@@ -8,7 +8,8 @@
 import Foundation
 
 protocol MainViewOutput: AnyObject {
-    func fetchCharacters()
+    func fetchInitialData()
+    func fetchMoreData()
     func showDetail(for model: Character)
 }
 
@@ -20,7 +21,9 @@ final class MainPresenter: MainViewOutput {
     private var router: MainRouterInput?
     private var networkService: NetworkServiceType?
 
-    // MARK: - Internal methods
+    private var charactersResponse: AllCharactersResponse?
+
+    // MARK: - Internal functions
 
     init(view: MainViewInput, router: MainRouterInput, networkService: NetworkServiceType) {
         self.view = view
@@ -28,14 +31,35 @@ final class MainPresenter: MainViewOutput {
         self.networkService = networkService
     }
 
-    func fetchCharacters() {
+    func fetchInitialData() {
         networkService?.execute(
             .listCharacters,
             expecting: AllCharactersResponse.self
         ) { [weak self] result in
             switch result {
-            case .success(let model):
-                self?.view?.reload(with: model.results)
+            case .success(let response):
+                self?.charactersResponse = response
+                self?.reload()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func fetchMoreData() {
+        guard let urlString = charactersResponse?.info.next,
+              let request = NetworkRequest(urlString: urlString)
+        else { return }
+
+        networkService?.execute(
+            request,
+            expecting: AllCharactersResponse.self
+        ) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.charactersResponse?.results.append(contentsOf: response.results)
+                self?.charactersResponse?.info = response.info
+                self?.reloadWithNewData()
             case .failure(let error):
                 print(error)
             }
@@ -44,5 +68,17 @@ final class MainPresenter: MainViewOutput {
 
     func showDetail(for model: Character) {
         router?.showDetailScreen(with: model)
+    }
+
+    // MARK: - Private functions
+
+    private func reload() {
+        guard let charactersResponse = charactersResponse else { return }
+        self.view?.didFetchInitialData(with: charactersResponse)
+    }
+
+    private func reloadWithNewData() {
+        guard let charactersResponse = charactersResponse else { return }
+        self.view?.didFtechMoreData(with: charactersResponse)
     }
 }

@@ -12,7 +12,7 @@ final class CharacterOriginView: BaseView {
     // MARK: - Configuration
 
     func configure(with text: String) {
-        planetNameLabel.text = text
+        planetNameLabel.text = text.capitalized
     }
 
     // MARK: - Views
@@ -25,7 +25,7 @@ final class CharacterOriginView: BaseView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "planetIcon")
+        imageView.image = UIImage(named: Strings.planetIcon)
         return imageView
     }()
 
@@ -53,10 +53,10 @@ final class CharacterOriginView: BaseView {
     override func setupHierarchy() {
         addSubview(titleLabel)
         addSubview(containerPlanetView)
-        addSubview(containerImageView)
-        addSubview(stackView)
 
+        containerPlanetView.addSubview(containerImageView)
         containerImageView.addSubview(imageView)
+        containerPlanetView.addSubview(stackView)
 
         stackView.addArrangedSubview(planetNameLabel)
         stackView.addArrangedSubview(planetLabel)
@@ -66,7 +66,8 @@ final class CharacterOriginView: BaseView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
         containerPlanetView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,20 +83,27 @@ final class CharacterOriginView: BaseView {
 
         containerImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            containerImageView.centerYAnchor.constraint(equalTo: containerPlanetView.centerYAnchor),
             containerImageView.topAnchor.constraint(
                 equalTo: containerPlanetView.topAnchor,
-                constant: Metrics.defaultOffset
+                constant: Metrics.containerImageViewOffset
             ),
             containerImageView.leadingAnchor.constraint(
                 equalTo: containerPlanetView.leadingAnchor,
-                constant: Metrics.defaultOffset
+                constant: Metrics.containerImageViewOffset
             ),
             containerImageView.bottomAnchor.constraint(
                 equalTo: containerPlanetView.bottomAnchor,
-                constant: -Metrics.defaultOffset
+                constant: -Metrics.containerImageViewOffset
             ),
-            containerImageView.heightAnchor.constraint(equalToConstant: Metrics.containerImageViewHeight),
-            containerImageView.widthAnchor.constraint(equalToConstant: Metrics.containerImageViewHeight)
+            containerImageView.heightAnchor.constraint(
+                equalTo: containerPlanetView.heightAnchor,
+                constant: -Metrics.containerImageViewHeightOffset
+            ),
+            containerImageView.widthAnchor.constraint(
+                equalTo: containerPlanetView.heightAnchor,
+                constant: -Metrics.containerImageViewHeightOffset
+            )
         ])
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,20 +117,20 @@ final class CharacterOriginView: BaseView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(
-                equalTo: containerImageView.topAnchor,
-                constant: Metrics.defaultOffset
+                equalTo: containerPlanetView.topAnchor,
+                constant: Metrics.stackViewOffset
             ),
             stackView.leadingAnchor.constraint(
                 equalTo: containerImageView.trailingAnchor,
-                constant: Metrics.stackViewSideOffset
+                constant: Metrics.stackViewOffset
             ),
             stackView.trailingAnchor.constraint(
                 equalTo: containerPlanetView.trailingAnchor,
-                constant: -Metrics.stackViewSideOffset
+                constant: -Metrics.stackViewOffset
             ),
             stackView.bottomAnchor.constraint(
-                equalTo: containerImageView.bottomAnchor,
-                constant: -Metrics.defaultOffset
+                equalTo: containerPlanetView.bottomAnchor,
+                constant: -Metrics.stackViewOffset
             )
         ])
     }
@@ -154,19 +162,20 @@ private extension CharacterOriginView {
         static let containerViewTopOffset: CGFloat = 16
         static let containerPlanetViewCornerRadius: CGFloat = 16
 
-        static let containerImageViewHeight: CGFloat = 64
+        static let containerImageViewHeightOffset: CGFloat = 16
         static let containerImageViewCornerRadius: CGFloat = 10
 
         static let imageViewHeight: CGFloat = 24
 
-        static let defaultOffset: CGFloat = 8
+        static let containerImageViewOffset: CGFloat = 8
         
         static let stackViewSpacing: CGFloat = 8
-        static let stackViewSideOffset: CGFloat = 16
+        static let stackViewOffset: CGFloat = 16
     }
 
     enum Strings {
         static let origin = "Origin"
         static let planet = "Planet"
+        static let planetIcon = "planetIcon"
     }
 }

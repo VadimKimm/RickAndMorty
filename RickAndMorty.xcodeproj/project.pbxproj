@@ -37,6 +37,10 @@
 		DD546A602A914038000EFEBC /* CharacterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A5F2A914038000EFEBC /* CharacterInfoView.swift */; };
 		DD546A622A92110F000EFEBC /* CharacterInfoTraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A612A92110F000EFEBC /* CharacterInfoTraitView.swift */; };
 		DD546A642A922A91000EFEBC /* CharacterOriginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A632A922A91000EFEBC /* CharacterOriginView.swift */; };
+		DD546A662A923742000EFEBC /* CharacterEpisodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A652A923742000EFEBC /* CharacterEpisodesView.swift */; };
+		DD546A6B2A9239C5000EFEBC /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A6A2A9239C5000EFEBC /* Episode.swift */; };
+		DD546A6D2A92497C000EFEBC /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A6C2A92497C000EFEBC /* EpisodeView.swift */; };
+		DD546A6F2A937B0C000EFEBC /* ActivityFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD546A6E2A937B0C000EFEBC /* ActivityFooterReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +76,10 @@
 		DD546A5F2A914038000EFEBC /* CharacterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoView.swift; sourceTree = "<group>"; };
 		DD546A612A92110F000EFEBC /* CharacterInfoTraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoTraitView.swift; sourceTree = "<group>"; };
 		DD546A632A922A91000EFEBC /* CharacterOriginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterOriginView.swift; sourceTree = "<group>"; };
+		DD546A652A923742000EFEBC /* CharacterEpisodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEpisodesView.swift; sourceTree = "<group>"; };
+		DD546A6A2A9239C5000EFEBC /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		DD546A6C2A92497C000EFEBC /* EpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
+		DD546A6E2A937B0C000EFEBC /* ActivityFooterReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFooterReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,7 @@
 			children = (
 				DD546A412A90E307000EFEBC /* Response */,
 				DD546A3E2A90E1D9000EFEBC /* Character */,
+				DD546A692A9239A8000EFEBC /* Episode */,
 			);
 			path = ModelLayer;
 			sourceTree = "<group>";
@@ -208,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				DD546A492A910137000EFEBC /* CharacterCollectionViewCell.swift */,
+				DD546A6E2A937B0C000EFEBC /* ActivityFooterReusableView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -247,8 +257,18 @@
 				DD546A5F2A914038000EFEBC /* CharacterInfoView.swift */,
 				DD546A612A92110F000EFEBC /* CharacterInfoTraitView.swift */,
 				DD546A632A922A91000EFEBC /* CharacterOriginView.swift */,
+				DD546A652A923742000EFEBC /* CharacterEpisodesView.swift */,
+				DD546A6C2A92497C000EFEBC /* EpisodeView.swift */,
 			);
 			path = SupportViews;
+			sourceTree = "<group>";
+		};
+		DD546A692A9239A8000EFEBC /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				DD546A6A2A9239C5000EFEBC /* Episode.swift */,
+			);
+			path = Episode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +354,9 @@
 				DD546A572A9126F5000EFEBC /* MainRouter.swift in Sources */,
 				DD546A2F2A90D154000EFEBC /* Character.swift in Sources */,
 				DD546A5D2A912A95000EFEBC /* DetailCharacterModuleConfigurator.swift in Sources */,
+				DD546A6D2A92497C000EFEBC /* EpisodeView.swift in Sources */,
+				DD546A6F2A937B0C000EFEBC /* ActivityFooterReusableView.swift in Sources */,
+				DD546A6B2A9239C5000EFEBC /* Episode.swift in Sources */,
 				DD546A452A9100B4000EFEBC /* MainCollectionViewAdapter.swift in Sources */,
 				DD546A602A914038000EFEBC /* CharacterInfoView.swift in Sources */,
 				DD546A352A90D471000EFEBC /* CharacterStatus.swift in Sources */,
@@ -348,6 +371,7 @@
 				DD546A372A90D4CD000EFEBC /* CharacterGender.swift in Sources */,
 				DD546A2C2A90CFC4000EFEBC /* NetworkEndpoint.swift in Sources */,
 				DD546A5B2A912905000EFEBC /* DetailCharacterView.swift in Sources */,
+				DD546A662A923742000EFEBC /* CharacterEpisodesView.swift in Sources */,
 				DD546A622A92110F000EFEBC /* CharacterInfoTraitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

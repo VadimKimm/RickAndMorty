@@ -11,6 +11,12 @@ final class CharacterCollectionViewCell: BaseCollectionViewCell {
 
     // MARK: - Configuration
 
+    static func cellSize(collectionView: UICollectionView) -> CGSize {
+        let width = (collectionView.frame.width - 63) / 2
+        let height = width * 1.3
+        return CGSize(width: width, height: height)
+    }
+
     func configure(with title: String) {
         nameLabel.text = title
     }
@@ -21,12 +27,6 @@ final class CharacterCollectionViewCell: BaseCollectionViewCell {
                 self?.imageView.image = UIImage(data: data)
             }
         }
-    }
-
-    static func cellSize(collectionView: UICollectionView) -> CGSize {
-        let width = (collectionView.frame.width - 63) / 2
-        let height = width * 1.3
-        return CGSize(width: width, height: height)
     }
 
     //MARK: - Properties

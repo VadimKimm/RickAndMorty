@@ -8,8 +8,8 @@
 import Foundation
 
 struct AllCharactersResponse: Codable {
-    let info: Info
-    let results: [Character]
+    var info: Info
+    var results: [Character]
 
     struct Info: Codable {
         let count: Int

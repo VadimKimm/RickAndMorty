@@ -8,7 +8,8 @@
 import UIKit
 
 protocol MainViewInput: AnyObject {
-    func reload(with datasource: [Character])
+    func didFetchInitialData(with charactersResponse: AllCharactersResponse)
+    func didFtechMoreData(with charactersResponse: AllCharactersResponse)
 }
 
 final class MainViewController: UIViewController {
@@ -33,11 +34,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupCollectionViewAdapter()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fetchCharacters()
+        fetchInitialData()
     }
 
     // MARK: - Private functions
@@ -54,18 +51,22 @@ final class MainViewController: UIViewController {
         )
     }
 
-    private func fetchCharacters() {
+    private func fetchInitialData() {
         customView.startActivity()
-        output?.fetchCharacters()
+        output?.fetchInitialData()
     }
 }
 
 // MARK: - MainViewInput
 
 extension MainViewController: MainViewInput {
-    func reload(with datasource: [Character]) {
-        adapter?.configure(with: datasource)
+    func didFetchInitialData(with charactersResponse: AllCharactersResponse) {
+        adapter?.configure(with: charactersResponse)
         customView.stopActivity()
+    }
+
+    func didFtechMoreData(with charactersResponse: AllCharactersResponse) {
+        adapter?.update(with: charactersResponse)
     }
 }
 
@@ -74,5 +75,9 @@ extension MainViewController: MainViewInput {
 extension MainViewController: MainCollectionViewAdapterOutput {
     func didSelectCell(with model: Character) {
         output?.showDetail(for: model)
+    }
+
+    func fetchMoreData() {
+        output?.fetchMoreData()
     }
 }

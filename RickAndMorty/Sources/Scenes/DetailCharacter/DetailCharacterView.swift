@@ -13,11 +13,12 @@ final class DetailCharacterView: BaseView {
 
     func configure(with model: Character) {
         nameLabel.text = model.name
-        statusLabel.text = model.status.rawValue
+        statusLabel.text = model.status.rawValue.capitalized
         infoView.configure(with: model)
         originView.configure(with: model.origin.name)
+        episodesView.configure(with: model.episode)
 
-        downloadImage(with: model.image) { [weak self] result in
+        NetworkService.shared.downloadImage(with: model.image) { [weak self] result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
@@ -69,6 +70,7 @@ final class DetailCharacterView: BaseView {
 
     private let infoView = CharacterInfoView()
     private let originView = CharacterOriginView()
+    private let episodesView = CharacterEpisodesView()
 
     // MARK: - Private functions
 
@@ -81,6 +83,7 @@ final class DetailCharacterView: BaseView {
         stackView.addArrangedSubview(statusLabel)
         stackView.addArrangedSubview(infoView)
         stackView.addArrangedSubview(originView)
+        stackView.addArrangedSubview(episodesView)
     }
 
     override func setupLayout() {
@@ -88,7 +91,7 @@ final class DetailCharacterView: BaseView {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(
                 equalTo: topAnchor,
-                constant: Metrics.scrollViewOffset
+                constant: Metrics.scrollViewTopOffset
             ),
             scrollView.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
@@ -125,9 +128,11 @@ final class DetailCharacterView: BaseView {
 
         infoView.translatesAutoresizingMaskIntoConstraints = false
         originView.translatesAutoresizingMaskIntoConstraints = false
+        episodesView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             infoView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            originView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+            originView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            episodesView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
 
@@ -144,36 +149,13 @@ final class DetailCharacterView: BaseView {
     }
 }
 
-// MARK: - Download image
-
-private extension DetailCharacterView {
-    func downloadImage(
-        with urlString: String,
-        completion: @escaping (Result<Data, Error>) -> Void
-    ) {
-        guard let url = URL(string: urlString) else {
-            completion(.failure(NetworkError.badUrl))
-            return
-        }
-        let request = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(.failure(error ?? NetworkError.failedToGetData))
-                return
-            }
-
-            completion(.success(data))
-        }
-        task.resume()
-    }
-}
-
 // MARK: - Metrics
 
 private extension DetailCharacterView {
     enum Metrics {
         static let cornerRadius: CGFloat = 16
-        static let scrollViewOffset: CGFloat = 16
+        static let scrollViewTopOffset: CGFloat = 16
+        static let scrollViewOffset: CGFloat = 24
 
         static let stackViewSpacing: CGFloat = 24
         static let stackViewCustomSpacing: CGFloat = 8
